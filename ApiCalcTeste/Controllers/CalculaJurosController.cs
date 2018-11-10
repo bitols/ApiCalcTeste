@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiCalcTeste.Process;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,15 @@ namespace ApiCalcTeste.Controllers
     {
 
         // GET api/calculajuros
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("valorinicial={valor}&meses={tempo}")]
+        public IActionResult Get(
+            [FromServices] ICalcTeste calcTeste,
+             double valor,
+             int tempo
+            )
         {
-            return new string[] { "value1", "value2" };
+            var valorFinal = calcTeste.GetValorJuros(valor, tempo);
+            return Ok(valorFinal);
         }
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiCalcTeste.Process;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +14,17 @@ namespace ApiCalcTeste.Controllers
     {
         // GET api/showmethecode
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(
+            [FromServices] ICalcTeste calcTeste
+            )
         {
-            return Ok(Environment.GetEnvironmentVariable("URL_CODE"));
+            var urlCode = calcTeste.GetUrlCode();
+
+            if (String.IsNullOrEmpty(urlCode))
+                return NoContent();
+
+            return Ok(urlCode);
+
         }
     }
 }

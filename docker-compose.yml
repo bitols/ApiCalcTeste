@@ -8,3 +8,4 @@ services:
       dockerfile: ApiCalcTeste/Dockerfile
     environment:
       URL_CODE: "https://github.com/bitols/ApiCalcTeste"
+      VALOR_JUROS: 0.01
