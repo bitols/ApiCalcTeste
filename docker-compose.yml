@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  apicalcteste:
+    image: ${DOCKER_REGISTRY}apicalcteste
+    build:
+      context: .
+      dockerfile: ApiCalcTeste/Dockerfile
+    environment:
+      URL_CODE: "https://github.com/bitols/ApiCalcTeste"
