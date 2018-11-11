@@ -1,0 +1,53 @@
+swagger: '2.0'
+info:
+  description: Conteúdo elaborado para consumir dados da API.
+  version: 1.0.0
+  title: Api Calc Teste
+host: localhost:32856
+basePath: /api
+tags:
+  - name: Teste
+    description: Controller do teste
+
+schemes:
+  - http
+paths:
+  /teste/showmethecode:
+    get:
+      tags:
+        - Teste
+      description: 'Retorna a url de onde encontra-se o fonte no github'
+      operationId: GetUrlCode
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Sucesso
+          schema:
+            type: string
+  /teste/calculajuros/{valorInicial}/{meses}:
+    get:
+      tags:
+        - Teste
+      description: ''
+      operationId: GetJuros
+      produces:
+        - application/json
+      parameters: 
+        - name: valorInicial
+          in: path
+          description: Valor a ser calculado.
+          required: true
+          type: number
+          format: double
+        - name: meses
+          in: path
+          description: Meses.
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Sucesso
+          schema:
+            type: string            
