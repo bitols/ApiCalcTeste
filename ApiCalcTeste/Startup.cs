@@ -24,6 +24,12 @@ namespace ApiCalcTeste
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("MeuCors", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             services.AddMvc();
             services.AddTransient<ICalcTeste, CalcTeste>();
         }
@@ -36,6 +42,7 @@ namespace ApiCalcTeste
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("MeuCors");
             app.UseMvc();
         }
 

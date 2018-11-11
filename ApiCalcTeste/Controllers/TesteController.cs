@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApiCalcTeste.Process;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace ApiCalcTeste.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [EnableCors("MeuCors")]
     public class TesteController : Controller
     {
         [HttpGet("showmethecode")]
