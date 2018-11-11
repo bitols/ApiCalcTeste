@@ -7,20 +7,18 @@ namespace ApiCalcTeste.Process
 {
     public class CalcTeste : ICalcTeste
     {
-        public CalcTeste()
-        {
-
-        }
+        private const string URL_CODE = "https://github.com/bitols/ApiCalcTeste";
+        private const double VALOR_JUROS = 0.01;
 
         public string GetUrlCode()
         {
-            return Environment.GetEnvironmentVariable("URL_CODE");
+            return URL_CODE;
         }
 
         public string GetValorJuros(double valor, int tempo)
         {
-            var vlrJuros = Convert.ToDouble(Environment.GetEnvironmentVariable("VALOR_JUROS"));
-            var vlrFinal = Math.Truncate(100 * (valor * Math.Pow((1 + vlrJuros), tempo))) / 100;
+            
+            var vlrFinal = Math.Truncate(100 * (valor * Math.Pow((1 + VALOR_JUROS), tempo))) / 100;
 
             return vlrFinal.ToString("0.00");
         }

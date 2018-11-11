@@ -18,12 +18,7 @@ namespace ApiCalcTeste.Controllers
             )
         {
             var urlCode = calcTeste.GetUrlCode();
-
-            var result = new
-            {
-                urlCode = urlCode
-            };
-            return Ok(result);
+            return Ok(urlCode);
 
         }
 
@@ -35,11 +30,7 @@ namespace ApiCalcTeste.Controllers
             )
         {
             var valorJuros = calcTeste.GetValorJuros(valorInicial, meses);
-            var result = new
-            {
-                valorJuros = valorJuros
-            };
-            return Ok(result);
+            return Ok(valorJuros);
         }
     }
 }
